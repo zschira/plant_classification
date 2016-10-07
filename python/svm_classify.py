@@ -8,7 +8,7 @@ import numpy as np
 fileName = "C:/temp/neon_plants.csv"
 df = pd.read_csv(fileName, skiprows = 0)
 
-#Extract taxonid column and assign an integer to each unique species this becomes y vector
+#Extract taxonid column and assign an integer to each unique species. This becomes y vector
 def getTarget(df):
 	species = df['taxonid']
 	labels, levels = pd.factorize(species)
@@ -33,8 +33,8 @@ X = getFeatures(df)
 def featureNorm(X):
 	X_shape = X.shape
 	X_norm = X
-	mu = np.mean(X, axis=1)
-	sigma = np.std(X, axis = 1)
+	mu = np.mean(X, axis=0)
+	sigma = np.std(X, axis = 0)
 	for i in range(X_shape[1]):
 		X_norm[:,i] = (X[:,i] - mu[i])/sigma[i]
 	return X_norm
@@ -67,7 +67,7 @@ X = featureNorm(X)
 #optemize constant parameters of cost function on the cross validation set
 def findParams(X_train, y_train, X_cv, y_cv):
 	accuracy = 0
-	params = np.array([.01, .03, .1, .3, 1, 3, 10, 30])
+	params = np.array([.001, .01, .03, .1, .3, 1, 3, 10, 30, 100])
 	for i in range(params.size):
 		for j in range(params.size):
 			C = params[i]
