@@ -64,7 +64,7 @@ X = featureNorm(X)
 (X, y) = randomizeVals(X, y)
 (X_train, X_test, X_cv, y_train, y_test, y_cv) = getSets(X, y)
 
-#optemize constant parameters of cost function on the cross validation set
+#optimize constant parameters of cost function on the cross validation set
 def findParams(X_train, y_train, X_cv, y_cv):
 	accuracy = 0
 	params = np.array([.001, .01, .03, .1, .3, 1, 3, 10, 30, 100])
