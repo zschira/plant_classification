@@ -5,7 +5,7 @@ import pandas as pd
 import re
 import numpy as np
 
-fileName = "C:/temp/neon_plants.csv"
+fileName = "../data/neon_plants.csv"
 df = pd.read_csv(fileName, skiprows = 0)
 
 #Extract taxonid column and assign an integer to each unique species. This becomes y vector
